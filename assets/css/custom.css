@@ -1,0 +1,20 @@
+.highlight:hover .highlight-copy-btn {
+  transition: 0.5s;
+  box-shadow: 0 0 10px #eee;
+  display: block;
+  background-color: inherit;
+  border-radius: 5px;
+  border: 1px solid #a31d1d;
+}
+.highlight-copy-btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  border: 1px solid #a31d1d;
+}
+
+code:not(pre *) {
+  background-color: inherit;
+  color: inherit;
+  border-radius: 5px;
+  border: 1px solid #a31d1d;
+  padding: 1px 5px;
+}

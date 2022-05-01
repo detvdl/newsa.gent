@@ -1,0 +1,286 @@
+#+title: NewsAgent
+#+startup: overview
+#+hugo_base_dir: ../
+#+hugo_auto_set_lastmod: t
+
+* Pages
+  :PROPERTIES:
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
+  :EXPORT_HUGO_MENU: :menu main
+  :EXPORT_HUGO_SECTION: pages
+  :EXPORT_HUGO_WEIGHT: auto
+  :END:
+
+** About
+:PROPERTIES:
+:EXPORT_FILE_NAME: about
+:END:
+
+I'm just your average, everyday, regular software developer with too many things on his mind.
+Oh, and I love Emacs.
+
+* Posts
+** TODO Incoherent ramblings of a math-man                                                :introduction:blog:hugo:
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: incoherent-ramblings-of-a-math-man
+:EXPORT_FILE_NAME: index
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2022-05-01 Sun 13:27]
+:END:
+<TBD> introductory post
+
+** TODO Pear-programming, or: How an apple a day won't keep the deadlines away            :@engineering:@agile:
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: pear-programming-or-how-an-apple-a-day-won-t-keep-the-deadlines-away
+:EXPORT_FILE_NAME: index
+:END:
+<TBD>
+
+** DONE Taming eshell with shackle.el, popper & el-patch                                  :@emacs:
+CLOSED: [2022-05-01 Sun 16:37]
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: taming-eshell-with-shackle-el-popper-&-el-patch
+:EXPORT_FILE_NAME: index
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2022-05-01 Sun 16:37]
+:END:
+A short while ago, I decided to adopt eshell into my daily work routine as a quick & easy-to-access shell from within my favourite editor.
+But I couldn't stand some of its default behaviour. Let's talk about it!
+#+hugo: more
+*** Emacs window management
+For quite some time now, I had been unhappy with Emacs' default management of temporary/ephemeral buffers and windows.
+
+*Example*: Something goes wrong, a =*Backtrace*= buffer pops up in some window, you close it with ~q~ and *boom*, your window setup is broken yet again.
+
+That's a very tame and relatable example, but there are some packages that have much more... /intrusive/ behaviour.
+
+Eshell, for example, just takes over whatever window you are currently in.  That's not very friendly, nor is it preferable for an ephemeral shell, which you don't *always* want on-screen.
+
+Looking into packages to manage this type of buffer and window more carefully lead me to the [[https://github.com/karthink/popper][popper]] package.
+
+*** Introducing Popper.el
+Popper.el is an amazing package, with a fairly simple premise:
+#+begin_quote
+If it tends to pop up out of nowhere, treat it as a pop-up buffer.
+#+end_quote
+
+These "ephemeral" buffers get a window of their own, whose visibility can be toggled on-and-off at your command.
+
+Its setup is simple enough, and in my ~init.el~ I have the following configured:
+#+begin_src emacs-lisp :hl_lines 8-34
+(use-package popper
+  :straight t
+  :after shackle
+  :bind (("C-`" . popper-toggle-latest)
+         ("M-`" . popper-cycle)
+         ("C-M-`" . popper-toggle-type))
+  :config
+  (setq popper-group-function #'popper-group-by-projectile
+        popper-display-control nil
+        popper-reference-buffers
+        '(occur-mode
+          grep-mode
+          locate-mode
+          embark-collect-mode
+          deadgrep-mode
+          "^\\*deadgrep"
+          help-mode
+          compilation-mode
+          ("^\\*Compile-Log\\*$" . hide)
+          backtrace-mode
+          "^\\*Backtrace\\*"
+          "^\\*eshell"
+          ("^\\*Warnings\\*$" . hide)
+          "^\\*Messages\\*$"
+          "^\\*Apropos"
+          "^\\*eldoc\\*"
+          "^\\*TeX errors\\*"
+          "^\\*ielm\\*"
+          "^\\*TeX Help\\*"
+          "\\*Shell Command Output\\*"
+          ("\\*Async Shell Command\\*" . hide)
+          "\\*Completions\\*"
+          "[Oo]utput\\*$"
+          "^magit*"))
+  (popper-mode +1)
+  (popper-echo-mode +1))
+#+end_src
+
+As you can tell from the highlighted lines, you *do* need to configure for yourself which buffers are treated as pop-ups.
+But that's a plus, since popper does not make any assumptions about *what* defines a pop-up buffer. That's all up to you!
+
+The special buffers now get a nice visible ~POP~ identifier in the leftmost corner of the modeline; it looks sort of like this:
+
+#+DOWNLOADED: file:/Users/detlevvandaele/Desktop/Screenshot 2022-05-01 at 14.54.19.png @ 2022-05-01 14:55:14
+[[file:../static/images/Posts/2022-05-01_14-55-14_Screenshot 2022-05-01 at 14.54.19.png]]
+
+As stated in the [[https://github.com/karthink/popper#managing-popup-placement][popper README]] itself, however, you will need additional configuration to manage the *placement* of these popups.
+
+By default, it uses, well, the default window placement defined by the creator of the buffer, and if that's non-existent, it pops up at the bottom of your active frame.
+
+You can set a different default behaviour for popper by setting
+~(setq popper-display-control t)~ and defining your own placement function similar to how ~popper-select-popup-at-bottom~ is defined.
+
+For more granular control over each window's placement, they recommend [[https://depp.brause.cc/shackle/][shackle.el]], and so that is what I ended up using.
+
+*** Shackling your windows in-place
+
+Shackle is very similar to popper in configuration, in that it is
+1. Very simple and straightforward, and
+2. You just specify a list of regexps, buffer names or modes to match
+and it does its magic. Just see for yourself:
+
+#+begin_src emacs-lisp
+(use-package shackle
+  :straight t
+  :demand t
+  :config
+  (setq shackle-default-rule '(:select t)
+        shackle-rules
+        '(;; Below
+          (compilation-mode
+           :noselect t :align below :size 0.33)
+          ("*Buffer List*"
+           :select t :align below :size 0.33)
+          ("*Async Shell Command*"
+           :noselect t :align below :size 0.20)
+          ("\\(?:[Oo]utput\\)\\*"
+           :regexp t :noselect t :align below :size 0.33)
+          ("\\*\\(?:Warnings\\|Compile-Log\\|Messages\\|Tex Help\\|TeX errors\\)\\*"
+           :regexp t :noselect t :align below :size 0.33)
+          (help-mode
+           :select t :align below :size 0.33)
+          ("*Backtrace*"
+           :noselect t :align below :size 0.33)
+          (magit-status-mode
+           :select t :align below :size 0.66)
+          ("magit-*"
+           :regexp t :align below :size 0.33)
+          ("^\\*deadgrep"
+           :regexp t :select t :align below :size 0.33)
+          ("^\\*eshell"
+           :regexp t :select t :align below :size 0.20)
+          ;; Right
+          ("\\*Apropos"
+           :regexp t :select t :align right :size 0.45)
+          )
+        )
+  (shackle-mode +1))
+
+#+end_src
+
+With this combination in hand, I managed to tackle almost every issue I had with buffer- and window-placement.
+
+*Almost* every single one...except for the main topic of this post: *eshell*.
+
+*** The good, the bad, and the eshell
+
+As is mentioned in the /Internals/ section of the [[https://depp.brause.cc/shackle/][shackle.el README]]:
+#+begin_quote
+...
+Emacs packages that neither use the display-buffer function directly nor indirectly won't be influenced by shackle.
+#+end_quote
+
+And this is problematic for us. If we look at the source code for eshell, we see the following:
+#+begin_src emacs-lisp :hl_lines 13
+(defun eshell (&optional arg)
+  (interactive "P")
+  (cl-assert eshell-buffer-name)
+  (let ((buf (cond ((numberp arg)
+		            (get-buffer-create (format "%s<%d>"
+					                           eshell-buffer-name
+					                           arg)))
+		           (arg
+		            (generate-new-buffer eshell-buffer-name))
+		           (t
+		            (get-buffer-create eshell-buffer-name)))))
+    (cl-assert (and buf (buffer-live-p buf)))
+    (pop-to-buffer-same-window buf)
+    (unless (derived-mode-p 'eshell-mode)
+      (eshell-mode))
+    buf))
+
+#+end_src
+
+That highlighted line, ~(pop-to-buffer-same-window buf)~ is the bane of our existence at this point.
+No matter what rules you add to ~display-buffer-alist~, eshell won't care. It will force its buffer into your current window, regardless of your demands.
+
+*So how do we fix this?*
+Surely we won't wait for an upstream patch to be applied, especially since the [[https://github.com/emacs-mirror/emacs/blob/5a223c7f2ef4c31abbd46367b6ea83cd19d30aa7/etc/NEWS#L842-L843][Emacs 28.1 release notes]] state the following:
+#+begin_quote
+'project-shell' and 'shell' now use 'pop-to-buffer-same-window'.
+This is to keep the same behavior as Eshell.
+#+end_quote
+
+That's where [[https://github.com/raxod502/el-patch][el-patch]] comes in!
+
+*** Patch, patch, patch to your heart's content
+
+Without going too much in-depth, el-patch is a wonderful package once you start wanting to hack on internal packages, or don't want to fork an entire project for a minor code-change.
+
+Its documentation is extensive, and you can find plenty examples of how to use it in the wild.
+
+For this post, we'll focus on the following functionalities:
+1. Use ~display-buffer~ to manage the eshell-buffer
+2. Allow specifying a custom buffer-name suffix
+
+The latter is just to "namespace" our eshell buffers a bit more clearly than just ~eshell<1>~, ~eshell<2>~, and so on.
+
+#+begin_src emacs-lisp :hl_lines 20-24,28-33
+(use-package el-patch)
+
+(eval-when-compile
+  (require 'el-patch))
+
+(use-package esh-mode
+  :straight (:type built-in)
+  :config/el-patch
+  (defcustom eshell-buffer-name "*eshell*"
+    :type 'string
+    :group 'eshell)
+  (defun eshell (&optional arg)
+    (interactive "P")
+    (cl-assert eshell-buffer-name)
+    (let ((buf (cond ((numberp arg)
+		              (get-buffer-create (format "%s<%d>"
+					                             eshell-buffer-name
+					                             arg)))
+		             (arg
+		              (generate-new-buffer (el-patch-swap
+                                             eshell-buffer-name
+                                             (format "%s[%s]"
+                                                     eshell-buffer-name
+                                                     arg))))
+		             (t
+		              (get-buffer-create eshell-buffer-name)))))
+      (cl-assert (and buf (buffer-live-p buf)))
+      (el-patch-swap (pop-to-buffer-same-window buf)
+                     (display-buffer buf 'display-buffer-pop-up-window))
+      (el-patch-wrap 1 0
+        (with-current-buffer buf
+          (unless (derived-mode-p 'eshell-mode)
+            (eshell-mode))))
+      buf))
+  :config
+  (defun eshell-here ()
+    "Opens up a new shell in the directory associated with the
+    current buffer's file. The eshell is renamed to match that
+    directory to make multiple eshell windows easier."
+    (interactive)
+    (let* ((parent (if (buffer-file-name)
+                       (file-name-directory (buffer-file-name))
+                     default-directory))
+           (name   (car (last (split-string parent "/" t)))))
+      (eshell name)))
+  (global-set-key (kbd "C-!") 'eshell-here))
+
+#+end_src
+* Footnotes
+* COMMENT Local Variables                                           :ARCHIVE:
+# Local Variables:
+# eval: (auto-fill-mode nil)
+# eval: (setq fill-column 120)
+# eval: (setq-local org-download-image-dir "../static/images")
+# End:
