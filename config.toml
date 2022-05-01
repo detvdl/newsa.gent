@@ -1,5 +1,5 @@
-languageCode = "en-us"
 baseUrl = "https://newsa.gent"
+languageCode = "en-us"
 title = "NewsAgent"
 theme = "anubis"
 paginate = 5
@@ -7,12 +7,6 @@ googleAnalytics = "G-12345"
 enableRobotsTXT = true
 
 [menu]
-[[menu.main]]
-identifier = "blog"
-name = "Blog"
-title = "Blog"
-url = "/"
-weight = -1
 
 [[menu.main]]
 identifier = "archive"
@@ -53,19 +47,6 @@ disableSummary = false
 copyCodeButton = true
 rssAsSocialIcon = true
 customCSS = ["css/custom.css"]
-
-  [params.isso]
-  enabled = true
-  data = "https://comments.example.com/"
-  jsLocation = "https://comments.example.com/js/embed.min.js"
-  css = true
-  lang = "de"
-  replyToSelf = true
-  requireAuthor = true
-  requireEmail = true
-  id = "thread-id"
-  avatar = true
-  avatar-bg = "#f0f0f0"
 
   [[params.social]]
   id = "github"
