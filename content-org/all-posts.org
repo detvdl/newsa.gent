@@ -6,7 +6,6 @@
 * Pages
   :PROPERTIES:
   :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
-  :EXPORT_HUGO_MENU: :menu main
   :EXPORT_HUGO_SECTION: /
   :EXPORT_HUGO_WEIGHT: auto
   :END:
@@ -16,8 +15,25 @@
 :EXPORT_FILE_NAME: about
 :END:
 
+*** Me
 I'm just your average, everyday, regular software developer with too many things on his mind.
-Oh, and I love Emacs.
+Oh, and I love Emacs, but you'll find that out as you read through my posts.
+
+I am currently employed at [[https://www.tomtom.com/][TomTom]] as a Senior Software engineer, a great environment where I've had many opportunities to grow and learn over the years.
+
+/All of the opinions voiced on this website are my own./
+
+*** My work
+I am not extremely active in the Open Source community, for a lack of time and motivation.
+
+This blog is an attempt to give back bits and pieces of knowledge that I have gathered over many years, while also motivating myself to do more in this space.
+
+Some minor things I have(n't) been working on are:
+- [[https://github.com/detvdl/newsa.gent][newsa.gent]] -- the source of this blog. Provides a sneak peek into draft/unpublished content, without the need for a Patreon subscription!
+- [[https://github.com/detvdl/cue-mode.el][cue-mode.el]] -- a minimal Emacs major mode for the [[https://cuelang.org/][CUE configuration language]]
+- [[https://github.com/detvdl/emacs.d][emacs.d]] -- my personal Emacs configuration. Caution: very scuffed and prone to mishaps!
+
+Those, and any other unfinished projects you can find over at my [[https://github.com/detvdl][GitHub profile]].
 
 * Posts
 :PROPERTIES:
@@ -300,6 +316,16 @@ The end result, depending on your configuration settings for shackle.el, might l
 :EXPORT_FILE_NAME: pear-programming-or-how-an-apple-a-day-won-t-keep-the-deadlines-away
 :END:
 <TBD>
+** TODO Leading Change, and following suit(s)
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: leading-change-and-following-suit-s
+:EXPORT_FILE_NAME: index
+:END:
+** TODO The Mythical Man-Month, a legendary beast
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: the-mythical-man-month-a-legendary-beast
+:EXPORT_FILE_NAME: index
+:END:
 
 * Footnotes
 * COMMENT Local Variables                                           :ARCHIVE:
