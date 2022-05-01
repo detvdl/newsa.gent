@@ -20,10 +20,13 @@ I'm just your average, everyday, regular software developer with too many things
 Oh, and I love Emacs.
 
 * Posts
+:PROPERTIES:
+  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :nocomment true
+  :EXPORT_HUGO_SECTION: posts
+  :END:
 ** TODO Incoherent ramblings of a math-man                                                :introduction:blog:hugo:
 :PROPERTIES:
-:EXPORT_HUGO_BUNDLE: incoherent-ramblings-of-a-math-man
-:EXPORT_FILE_NAME: index
+:EXPORT_FILE_NAME: incoherent-ramblings-of-a-math-man
 :END:
 :LOGBOOK:
 - State "DONE"       from "TODO"       [2022-05-01 Sun 13:27]
@@ -32,16 +35,14 @@ Oh, and I love Emacs.
 
 ** TODO Pear-programming, or: How an apple a day won't keep the deadlines away            :@engineering:@agile:
 :PROPERTIES:
-:EXPORT_HUGO_BUNDLE: pear-programming-or-how-an-apple-a-day-won-t-keep-the-deadlines-away
-:EXPORT_FILE_NAME: index
+:EXPORT_FILE_NAME: pear-programming-or-how-an-apple-a-day-won-t-keep-the-deadlines-away
 :END:
 <TBD>
 
 ** DONE Taming eshell with shackle.el, popper & el-patch                                  :@emacs:
 CLOSED: [2022-05-01 Sun 16:37]
 :PROPERTIES:
-:EXPORT_HUGO_BUNDLE: taming-eshell-with-shackle-el-popper-&-el-patch
-:EXPORT_FILE_NAME: index
+:EXPORT_FILE_NAME: taming-eshell-with-shackle-el-popper-&-el-patch
 :END:
 :LOGBOOK:
 - State "DONE"       from "TODO"       [2022-05-01 Sun 16:37]
