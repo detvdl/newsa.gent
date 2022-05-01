@@ -1,7 +1,7 @@
 +++
 title = "About"
 author = ["Detlev Vandaele"]
-lastmod = 2022-05-01T19:19:42+02:00
+lastmod = 2022-05-01T19:40:35+02:00
 draft = false
 weight = 2001
 noauthor = true

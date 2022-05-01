@@ -7,7 +7,7 @@
   :PROPERTIES:
   :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :noauthor true :nocomment true :nodate true :nopaging true :noread true
   :EXPORT_HUGO_MENU: :menu main
-  :EXPORT_HUGO_SECTION: pages
+  :EXPORT_HUGO_SECTION: /
   :EXPORT_HUGO_WEIGHT: auto
   :END:
 
@@ -24,6 +24,11 @@ Oh, and I love Emacs.
   :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :nocomment true
   :EXPORT_HUGO_SECTION: posts
   :END:
+** Index
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:END:
+
 ** TODO Incoherent ramblings of a math-man                                                :introduction:blog:hugo:
 :PROPERTIES:
 :EXPORT_FILE_NAME: incoherent-ramblings-of-a-math-man

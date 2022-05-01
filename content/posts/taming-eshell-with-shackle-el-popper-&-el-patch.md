@@ -2,7 +2,7 @@
 title = "Taming eshell with shackle.el, popper & el-patch"
 author = ["Detlev Vandaele"]
 date = 2022-05-01T16:37:00+02:00
-lastmod = 2022-05-01T19:19:42+02:00
+lastmod = 2022-05-01T19:40:35+02:00
 categories = ["emacs"]
 draft = false
 nocomment = true
