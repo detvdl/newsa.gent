@@ -2,7 +2,7 @@
 title = "Taming eshell with shackle.el, popper & el-patch"
 author = ["Detlev Vandaele"]
 date = 2022-05-01T16:37:00+02:00
-lastmod = 2022-05-01T19:40:35+02:00
+lastmod = 2022-05-01T20:53:52+02:00
 categories = ["emacs"]
 draft = false
 nocomment = true
@@ -22,7 +22,11 @@ For quite some time now, I had been unhappy with Emacs' default management of te
 
 That's a very tame and relatable example, but there are some packages that have much more... _intrusive_ behaviour. <br/>
 
-Eshell, for example, just takes over whatever window you are currently in.  That's not very friendly, nor is it preferable for an ephemeral shell, which you don't **always** want on-screen. <br/>
+**Eshell**, for example, just takes over whatever window you are currently in. Entirely. <br/>
+That's not very friendly, nor is it especially useful for a shell, which you most likely want: <br/>
+
+-   In a separate window, to monitor certain running processes <br/>
+-   In a hidden buffer, within a key-chord's reach, to execute a quick command or 2 <br/>
 
 Looking into packages to manage this type of buffer and window more carefully lead me to the [popper](https://github.com/karthink/popper) package. <br/>
 
@@ -246,3 +250,16 @@ The latter is just to "namespace" our eshell buffers a bit more clearly than jus
       (eshell name)))
   (global-set-key (kbd "C-!") 'eshell-here))
 ```
+
+
+## Conclusion {#conclusion}
+
+There you  go, we've el-patch'ed the original `eshell` command so that it conforms to the `(display-buffer)` requirement of shackle.el, and in the process added some minor QoL changes. <br/>
+
+Now, whenever you are in a project, you can start up a fresh, "project-local" instance of eshell with `C-!`. <br/>
+
+Whenever you want it out-of-sight, or back in-sight, you can just toggle it or cycle to it with popper's shortcuts (`` C-` `` and `` M-` ``). <br/>
+
+The end result, depending on your configuration settings for shackle.el, might look something like this: <br/>
+
+{{< figure src="/images/Posts/2022-05-01_20-48-46_Screenshot 2022-05-01 at 20.47.47.png" >}} <br/>

@@ -29,21 +29,6 @@ Oh, and I love Emacs.
 :EXPORT_FILE_NAME: _index
 :END:
 
-** TODO Incoherent ramblings of a math-man                                                :introduction:blog:hugo:
-:PROPERTIES:
-:EXPORT_FILE_NAME: incoherent-ramblings-of-a-math-man
-:END:
-:LOGBOOK:
-- State "DONE"       from "TODO"       [2022-05-01 Sun 13:27]
-:END:
-<TBD> introductory post
-
-** TODO Pear-programming, or: How an apple a day won't keep the deadlines away            :@engineering:@agile:
-:PROPERTIES:
-:EXPORT_FILE_NAME: pear-programming-or-how-an-apple-a-day-won-t-keep-the-deadlines-away
-:END:
-<TBD>
-
 ** DONE Taming eshell with shackle.el, popper & el-patch                                  :@emacs:
 CLOSED: [2022-05-01 Sun 16:37]
 :PROPERTIES:
@@ -62,7 +47,10 @@ For quite some time now, I had been unhappy with Emacs' default management of te
 
 That's a very tame and relatable example, but there are some packages that have much more... /intrusive/ behaviour.
 
-Eshell, for example, just takes over whatever window you are currently in.  That's not very friendly, nor is it preferable for an ephemeral shell, which you don't *always* want on-screen.
+*Eshell*, for example, just takes over whatever window you are currently in. Entirely.
+That's not very friendly, nor is it especially useful for a shell, which you most likely want:
+- In a separate window, to monitor certain running processes
+- In a hidden buffer, within a key-chord's reach, to execute a quick command or 2
 
 Looking into packages to manage this type of buffer and window more carefully lead me to the [[https://github.com/karthink/popper][popper]] package.
 
@@ -283,10 +271,39 @@ The latter is just to "namespace" our eshell buffers a bit more clearly than jus
   (global-set-key (kbd "C-!") 'eshell-here))
 
 #+end_src
+
+*** Conclusion
+
+There you  go, we've el-patch'ed the original ~eshell~ command so that it conforms to the ~(display-buffer)~ requirement of shackle.el, and in the process added some minor QoL changes.
+
+Now, whenever you are in a project, you can start up a fresh, "project-local" instance of eshell with ~C-!~.
+
+Whenever you want it out-of-sight, or back in-sight, you can just toggle it or cycle to it with popper's shortcuts (~C-`~ and ~M-`~).
+
+The end result, depending on your configuration settings for shackle.el, might look something like this:
+
+#+DOWNLOADED: file:/Users/detlevvandaele/Desktop/Screenshot 2022-05-01 at 20.47.47.png @ 2022-05-01 20:48:46
+[[file:../static/images/Posts/2022-05-01_20-48-46_Screenshot 2022-05-01 at 20.47.47.png]]
+
+
+** TODO Incoherent ramblings of a math-man                                                :introduction:blog:hugo:
+:PROPERTIES:
+:EXPORT_FILE_NAME: incoherent-ramblings-of-a-math-man
+:END:
+:LOGBOOK:
+- State "DONE"       from "TODO"       [2022-05-01 Sun 13:27]
+:END:
+<TBD> introductory post
+
+** TODO Pear-programming, or: How an apple a day won't keep the deadlines away            :@engineering:@agile:
+:PROPERTIES:
+:EXPORT_FILE_NAME: pear-programming-or-how-an-apple-a-day-won-t-keep-the-deadlines-away
+:END:
+<TBD>
+
 * Footnotes
 * COMMENT Local Variables                                           :ARCHIVE:
 # Local Variables:
-# eval: (auto-fill-mode nil)
 # eval: (setq fill-column 120)
 # eval: (setq-local org-download-image-dir "../static/images")
 # End:
