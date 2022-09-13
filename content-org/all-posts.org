@@ -16,24 +16,42 @@
 :END:
 
 *** Me
-I'm just your average, everyday, regular software developer with too many things on his mind.
-Oh, and I love Emacs, but you'll find that out as you read through my posts.
+I'm just an average, everyday software developer with too many things on his mind.
+This blog is an attempt to get some of those things out of my mind, and onto a shareable medium.
 
-I am currently employed at [[https://www.tomtom.com/][TomTom]] as a Senior Software engineer, a great environment where I've had many opportunities to grow and learn over the years.
+Oh, and I love *Emacs*, but you'll figure that out as you read through my posts.
 
-/All of the opinions voiced on this website are my own./
+I am currently employed at [[https://www.tomtom.com/][ *TomTom* ]] as a Senior Software engineer, a great environment where I've had many opportunities to grow and learn over the years.
 
-*** My work
-I am not extremely active in the Open Source community, for a lack of time and motivation.
+*** My Experience
+**** TomTom (2018 - present)
+I started working as a fresh-out-of-school Software Engineer for TomTom in the autumn of 2018.
+
+Throughout the years I have grown from a green, young developer, into a fully-fledged software engineer, embracing all of the aspects that come with developing *enterprise*, *production-ready* software for a number of projects:
+
+- I have gathered experience and expertise in *Java* and its JVM siblings, along with a slew of high quality, well-known frameworks and libraries such as *Spring (Boot)*, *Hibernate*, *RxJava*, etc. Some Python sprinkled on the side was never an exception either.
+
+- I've refined my operational and infrastructure skills by setting up, deploying and managing everything from a small AWS Lambda, to a *large-scale system of microservices* on both self-managed and cloud-managed *Kubernetes* services.
+
+- Software and tools such as Haschicorp's Terraform and Vault, Grafana, Prometheus, but also many of the managed services from cloud providers such as *Amazon AWS* and *Microsoft Azure* are no strangers to me.
+
+- At different points throughout my career, I have also come in contact with data-intensive applications, requiring me to build knowledge of Data Pipeline solutions like Apache's Airflow, as well as the wonderful world of Spark and its hosted runtime environments such as Databricks.
+
+But most of all, I have learned what it means to be a *team player*. Great mentorship and amazing colleagues have elevated me to where I am today, and through the years I have had the honor to act as the Technical Lead of several amazing teams, applying the knowledge and experience they have thrust upon me.
+
+I still learn everyday, if not more than when I was new; and I want to *keep on learning*.
+
+*** My Projects
+I am not extremely active in the Open Source community, for a lack of time, motivation and energy.
 
 This blog is an attempt to give back bits and pieces of knowledge that I have gathered over many years, while also motivating myself to do more in this space.
 
 Some minor things I have(n't) been working on are:
 - [[https://github.com/detvdl/newsa.gent][newsa.gent]] -- the source of this blog. Provides a sneak peek into draft/unpublished content, without the need for a Patreon subscription!
 - [[https://github.com/detvdl/cue-mode.el][cue-mode.el]] -- a minimal Emacs major mode for the [[https://cuelang.org/][CUE configuration language]]
-- [[https://github.com/detvdl/emacs.d][emacs.d]] -- my personal Emacs configuration. Caution: very scuffed and prone to mishaps!
+- [[https://github.com/detvdl/emacs.d][emacs.d]] -- my personal Emacs configuration. Caution: very disorganized and prone to mishaps!
 
-Those, and any other unfinished projects you can find over at my [[https://github.com/detvdl][GitHub profile]].
+Those, and any other (un)finished projects you can find over at my [[https://github.com/detvdl][GitHub profile]].
 
 * Posts
 :PROPERTIES:
@@ -302,16 +320,7 @@ The end result, depending on your configuration settings for shackle.el, might l
 [[file:../static/images/Posts/2022-05-01_20-48-46_Screenshot 2022-05-01 at 20.47.47.png]]
 
 
-** TODO Incoherent ramblings of a math-man                                                :introduction:blog:hugo:
-:PROPERTIES:
-:EXPORT_FILE_NAME: incoherent-ramblings-of-a-math-man
-:END:
-:LOGBOOK:
-- State "DONE"       from "TODO"       [2022-05-01 Sun 13:27]
-:END:
-<TBD> introductory post
-
-** TODO Pear-programming, or: How an apple a day won't keep the deadlines away            :@engineering:@agile:
+** TODO Pear-programming, or: How I Learned Not To Compare Apples & Oranges               :@engineering:@agile:
 :PROPERTIES:
 :EXPORT_FILE_NAME: pear-programming-or-how-an-apple-a-day-won-t-keep-the-deadlines-away
 :END:
