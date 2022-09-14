@@ -1,3 +1,48 @@
+html {
+	scroll-behavior: smooth;
+}
+
+.common-header {
+  border-bottom: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .tableOfContentContainer {
+      display: none !important;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  div.article-nav {
+    display: grid;
+    grid-template-columns: 42em 15rem;
+    max-width: 100em;
+    width: 90%;
+    margin: auto 0;
+  }
+}
+
+.tableOfContentContainer {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 2rem;
+  align-self: start;
+  font-size: smaller;
+  border-left: 2px solid #efefef;
+  margin-left: 5px;
+}
+
+.tableOfContentContainer > nav > ul {
+  list-style-type: none;
+  list-style: none;
+  padding-left: 20px;
+  padding-right: 0;
+}
+
+.tableOfContentContainer > h3 {
+  padding-left: 20px;
+}
+
 .highlight:hover .highlight-copy-btn {
   transition: 0.5s;
   box-shadow: 0 0 10px #eee;

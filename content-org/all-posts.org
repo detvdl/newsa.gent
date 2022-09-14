@@ -55,9 +55,9 @@ Those, and any other (un)finished projects you can find over at my [[https://git
 
 * Posts
 :PROPERTIES:
-  :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :nocomment true
-  :EXPORT_HUGO_SECTION: posts
-  :END:
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :nocomment true
+:EXPORT_HUGO_SECTION: posts
+:END:
 ** Index
 :PROPERTIES:
 :EXPORT_FILE_NAME: _index
@@ -67,6 +67,7 @@ Those, and any other (un)finished projects you can find over at my [[https://git
 CLOSED: [2022-05-01 Sun 16:37]
 :PROPERTIES:
 :EXPORT_FILE_NAME: taming-eshell-with-shackle-el-popper-&-el-patch
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :toc true
 :END:
 :LOGBOOK:
 - State "DONE"       from "TODO"       [2022-05-01 Sun 16:37]
